@@ -2,7 +2,7 @@ palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
           "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
 
 shinyServer(function(input, output, session) {
-  teens <- read.csv("snsdata.csv")
+  teens <- read.csv("snsdata.csv", header=T)
   teens$age <- ifelse(teens$age >= 13 & teens$age < 20, teens$age, NA)
   
   teens$female <- ifelse(teens$gender == "F" & !is.na(teens$gender), 1, 0)
